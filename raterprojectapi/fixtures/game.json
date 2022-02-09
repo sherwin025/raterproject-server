@@ -1,0 +1,15 @@
+[
+    {
+        "model": "raterprojectapi.game",
+        "pk": 1,
+        "fields": {
+            "title": "Halo 3",
+            "description": "Dope first person shooter possibly best game ever",
+            "designer": "Bungie",
+            "year_released": "2007",
+            "num_of_players": "12",
+            "est_time_to_play": "10",
+            "age_recomendation": "12"
+        }
+}
+]

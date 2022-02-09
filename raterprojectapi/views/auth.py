@@ -27,13 +27,15 @@ def login_user(request):
         token = Token.objects.get(user=authenticated_user)
         data = {
             'valid': True,
-            'token': token.key
+            'token': token.key,
+            'userId': authenticated_user.player.id
         }
         return Response(data)
     else:
         # Bad login details were provided. So we can't log the user in.
         data = { 'valid': False }
         return Response(data)
+
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
@@ -55,12 +57,14 @@ def register_user(request):
 
     # Now save the extra info in the levelupapi_gamer table
     player = Player.objects.create(
-        bio=request.data['bio'],
+        gamertag=request.data['gamertag'],
         user=new_user
     )
 
     # Use the REST Framework's token generator on the new user account
     token = Token.objects.create(user=player.user)
     # Return the token to the client
-    data = { 'token': token.key }
+    data = { 'token': token.key,
+            "userId": player.id}
+    
     return Response(data)
