@@ -4,6 +4,8 @@ from django.urls import path
 from raterprojectapi.models.game_review import GameReviews
 from raterprojectapi.views import register_user, login_user
 from rest_framework import routers
+from django.conf import settings
+from django.conf.urls.static import static
 
 from raterprojectapi.views import GameView, CategoryView
 from raterprojectapi.views.gamerating import RatingView
@@ -21,4 +23,4 @@ urlpatterns = [
     path('api-auth', include('rest_framework.urls', namespace='rest_framework')),
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
