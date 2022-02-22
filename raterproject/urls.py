@@ -10,12 +10,14 @@ from django.conf.urls.static import static
 from raterprojectapi.views import GameView, CategoryView
 from raterprojectapi.views.gamerating import RatingView
 from raterprojectapi.views.gamereview import ReviewView
+from raterprojectapi.views.image import ImageView
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r"games", GameView, "game")
 router.register(r"category", CategoryView, "category")
-router.register(r"reviews", ReviewView, "reviews" )
-router.register(r"ratings", RatingView, "reviews" )
+router.register(r"reviews", ReviewView, "review" )
+router.register(r"ratings", RatingView, "rating" )
+router.register(r"images", ImageView , "image" )
 
 urlpatterns = [
     path('register', register_user),
